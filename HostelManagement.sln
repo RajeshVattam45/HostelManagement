@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35514.174
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HostelManagement", "HostelManagement", "{92E546D1-C8E3-48DD-9E00-BB6D64A90A8D}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostelService.API", "HostelService.API\HostelService.API.csproj", "{5BDF58A1-E96B-4940-8025-9B15D3B3C1F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostelService.Application", "HostelService.Application\HostelService.Application.csproj", "{1745C77C-280C-4F72-B47C-958723A4E134}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostelService.Domain", "HostelService.Domain\HostelService.Domain.csproj", "{1423DADF-08AE-4225-880A-AF6A001FE0C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostelService.Infrastructure", "HostelService.Infrastructure\HostelService.Infrastructure.csproj", "{20C1AA1F-D732-48ED-9F6B-F0FB784D7E47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostelService.Tests", "HostelService.Tests\HostelService.Tests.csproj", "{2C1BF4A6-2735-4AE9-ACE5-6CE23CC65482}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5BDF58A1-E96B-4940-8025-9B15D3B3C1F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BDF58A1-E96B-4940-8025-9B15D3B3C1F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BDF58A1-E96B-4940-8025-9B15D3B3C1F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BDF58A1-E96B-4940-8025-9B15D3B3C1F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1745C77C-280C-4F72-B47C-958723A4E134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1745C77C-280C-4F72-B47C-958723A4E134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1745C77C-280C-4F72-B47C-958723A4E134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1745C77C-280C-4F72-B47C-958723A4E134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1423DADF-08AE-4225-880A-AF6A001FE0C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1423DADF-08AE-4225-880A-AF6A001FE0C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1423DADF-08AE-4225-880A-AF6A001FE0C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1423DADF-08AE-4225-880A-AF6A001FE0C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20C1AA1F-D732-48ED-9F6B-F0FB784D7E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20C1AA1F-D732-48ED-9F6B-F0FB784D7E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20C1AA1F-D732-48ED-9F6B-F0FB784D7E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20C1AA1F-D732-48ED-9F6B-F0FB784D7E47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C1BF4A6-2735-4AE9-ACE5-6CE23CC65482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C1BF4A6-2735-4AE9-ACE5-6CE23CC65482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C1BF4A6-2735-4AE9-ACE5-6CE23CC65482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C1BF4A6-2735-4AE9-ACE5-6CE23CC65482}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5BDF58A1-E96B-4940-8025-9B15D3B3C1F7} = {92E546D1-C8E3-48DD-9E00-BB6D64A90A8D}
+		{1745C77C-280C-4F72-B47C-958723A4E134} = {92E546D1-C8E3-48DD-9E00-BB6D64A90A8D}
+		{1423DADF-08AE-4225-880A-AF6A001FE0C9} = {92E546D1-C8E3-48DD-9E00-BB6D64A90A8D}
+		{20C1AA1F-D732-48ED-9F6B-F0FB784D7E47} = {92E546D1-C8E3-48DD-9E00-BB6D64A90A8D}
+		{2C1BF4A6-2735-4AE9-ACE5-6CE23CC65482} = {92E546D1-C8E3-48DD-9E00-BB6D64A90A8D}
+	EndGlobalSection
+EndGlobal
