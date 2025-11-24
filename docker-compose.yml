@@ -5,8 +5,7 @@ services:
       - "8085:8080"
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
-      ASPNETCORE_URLS: "http://0.0.0.0:8080"
-      ConnectionStrings__DefaultConnection: "Server=hostel-db;Database=HostelManagement;User Id=sa;Password=YourPassword123!;TrustServerCertificate=True;"
+      ConnectionStrings__DefaultConnection: ${DB_CONNECTION}
     depends_on:
       - hostel-db
     networks:
@@ -15,7 +14,7 @@ services:
   hostel-db:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
-      SA_PASSWORD: "YourPassword123!"
+      SA_PASSWORD: ${DB_PASSWORD}
       ACCEPT_EULA: "Y"
     ports:
       - "1433:1433"
