@@ -31,6 +31,12 @@ builder.Services.AddDbContext<HostelDbContext> ( options =>
 builder.Services.AddScoped<IHostelAppService, HostelAppService> ();
 builder.Services.AddScoped<IHostelRepository, HostelRepository> ();
 
+builder.Services.AddScoped<IRoomAppService, RoomAppService> ();
+builder.Services.AddScoped<IRoomRepository, RoomRepository> ();
+
+builder.Services.AddScoped<IHostelStudentRepository, HostelStudentRepository> ();
+builder.Services.AddScoped<IHostelStudentAppService, HostelStudentAppService> ();
+
 // --------------------
 // MVC + Swagger
 // --------------------

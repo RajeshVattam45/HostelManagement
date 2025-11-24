@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HostelManagement", "HostelManagement", "{92E546D1-C8E3-48DD-9E00-BB6D64A90A8D}"
 	ProjectSection(SolutionItems) = preProject
+		.env = .env
+		docker-compose.override.yml = docker-compose.override.yml
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
@@ -17,6 +19,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostelService.Infrastructure", "HostelService.Infrastructure\HostelService.Infrastructure.csproj", "{20C1AA1F-D732-48ED-9F6B-F0FB784D7E47}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostelService.Tests", "HostelService.Tests\HostelService.Tests.csproj", "{2C1BF4A6-2735-4AE9-ACE5-6CE23CC65482}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{B5C771FE-C162-420B-A6E3-CB1825C26FA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{84B8B525-3D7A-4EBD-81AA-FDB7BC23750C}"
+	ProjectSection(SolutionItems) = preProject
+		ci-cd.yml = ci-cd.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,5 +63,7 @@ Global
 		{1423DADF-08AE-4225-880A-AF6A001FE0C9} = {92E546D1-C8E3-48DD-9E00-BB6D64A90A8D}
 		{20C1AA1F-D732-48ED-9F6B-F0FB784D7E47} = {92E546D1-C8E3-48DD-9E00-BB6D64A90A8D}
 		{2C1BF4A6-2735-4AE9-ACE5-6CE23CC65482} = {92E546D1-C8E3-48DD-9E00-BB6D64A90A8D}
+		{B5C771FE-C162-420B-A6E3-CB1825C26FA0} = {92E546D1-C8E3-48DD-9E00-BB6D64A90A8D}
+		{84B8B525-3D7A-4EBD-81AA-FDB7BC23750C} = {B5C771FE-C162-420B-A6E3-CB1825C26FA0}
 	EndGlobalSection
 EndGlobal

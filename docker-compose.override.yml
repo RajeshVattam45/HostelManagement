@@ -1,0 +1,8 @@
+services:
+  hostel-api:
+    build:
+      context: .
+      dockerfile: HostelService.API/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ConnectionStrings__DefaultConnection: "Server=hostel-db;Database=HostelManagement;User Id=sa;Password=YourPassword123!;TrustServerCertificate=True;"
