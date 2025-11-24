@@ -5,16 +5,19 @@ EXPOSE 8080
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy csproj (inside build context)
-COPY ["HostelService.API.csproj", "./"]
-RUN dotnet restore
+COPY HostelService.API/HostelService.API.csproj HostelService.API/
+COPY HostelService.Application/HostelService.Application.csproj HostelService.Application/
+COPY HostelService.Domain/HostelService.Domain.csproj HostelService.Domain/
+COPY HostelService.Infrastructure/HostelService.Infrastructure.csproj HostelService.Infrastructure/
 
-# Copy the rest of the project files
+RUN dotnet restore "HostelService.API/HostelService.API.csproj"
+
 COPY . .
-RUN dotnet build -c Release -o /app/build
+WORKDIR "/src/HostelService.API"
+RUN dotnet build "HostelService.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish -c Release -o /app/publish --no-restore
+RUN dotnet publish "HostelService.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
