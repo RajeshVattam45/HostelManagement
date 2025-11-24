@@ -2,7 +2,7 @@ name: CI/CD for HostelService
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   build_test_and_push:
