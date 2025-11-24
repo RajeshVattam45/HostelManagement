@@ -50,8 +50,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
   
+      - name: Debug paths
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "List files:"
+          dir
+  
       - name: Deploy using local runner
         run: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/hostelmanagement:${{ needs.build_test_and_push.outputs.image_tag }}
           docker compose -f docker-compose.yml down
           docker compose -f docker-compose.yml up -d
+
