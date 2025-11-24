@@ -15,9 +15,7 @@ namespace HostelService.API.Controllers
             _service = service;
         }
 
-        // -------------------------------------------
         // GET: api/hostels
-        // -------------------------------------------
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -25,9 +23,7 @@ namespace HostelService.API.Controllers
             return Ok(result);
         }
 
-        // -------------------------------------------
         // GET: api/hostels/{id}
-        // -------------------------------------------
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -38,9 +34,7 @@ namespace HostelService.API.Controllers
             return Ok(hostel);
         }
 
-        // -------------------------------------------
         // POST: api/hostels
-        // -------------------------------------------
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateHostelDto dto)
         {
@@ -52,9 +46,7 @@ namespace HostelService.API.Controllers
             return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
         }
 
-        // -------------------------------------------
         // PUT: api/hostels/{id}
-        // -------------------------------------------
         [HttpPut("{id:int}")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateHostelDto dto)
         {
@@ -72,9 +64,7 @@ namespace HostelService.API.Controllers
             }
         }
 
-        // -------------------------------------------
         // DELETE: api/hostels/{id}
-        // -------------------------------------------
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
