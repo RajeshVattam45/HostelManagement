@@ -8,7 +8,7 @@ jobs:
   build_test_and_push:
     runs-on: ubuntu-latest
     outputs:
-      image-tag: ${{ steps.set-tag.outputs.image_tag }}
+      image_tag: ${{ steps.set-tag.outputs.image_tag }}
 
     steps:
       - name: Checkout
@@ -20,17 +20,17 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore
-        run: dotnet restore HostelService.sln
+        run: dotnet restore HostelManagement.sln
 
       - name: Build
-        run: dotnet build --configuration Release HostelService.sln
+        run: dotnet build --configuration Release HostelManagement.sln
 
       - name: Test
         run: dotnet test --no-build --verbosity normal
 
       - name: Set image tag
         id: set-tag
-        run: echo "::set-output name=image_tag::${{ github.sha }}"
+        run: echo "image_tag=${{ github.sha }}" >> $GITHUB_OUTPUT
 
       - name: Build Docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/hostelmanagement:${{ steps.set-tag.outputs.image_tag }} ./HostelService.API

@@ -6,7 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HostelManagement", "HostelManagement", "{92E546D1-C8E3-48DD-9E00-BB6D64A90A8D}"
 	ProjectSection(SolutionItems) = preProject
 		.env = .env
-		ci-cd.yml = ci-cd.yml
 		docker-compose.override.yml = docker-compose.override.yml
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
