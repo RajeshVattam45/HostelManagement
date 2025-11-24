@@ -51,3 +51,4 @@ namespace HostelService.API.Controllers
         }
     }
 }
+
