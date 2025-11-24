@@ -47,6 +47,6 @@ jobs:
     steps:
       - name: Deploy using local runner
         run: |
-          docker pull ${{ secrets.DOCKER_USERNAME }}/hostelservice:${{ needs.build_test_and_push.outputs.image-tag }}
+          docker pull ${{ secrets.DOCKER_USERNAME }}/hostelservice:${{ needs.build_test_and_push.outputs.image_tag }}
           docker compose -f docker-compose.yml down
           docker compose -f docker-compose.yml up -d
