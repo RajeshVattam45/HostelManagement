@@ -45,7 +45,11 @@ jobs:
   deploy_to_local_runner:
     needs: build_test_and_push
     runs-on: [self-hosted]
+  
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+  
       - name: Deploy using local runner
         run: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/hostelmanagement:${{ needs.build_test_and_push.outputs.image_tag }}
