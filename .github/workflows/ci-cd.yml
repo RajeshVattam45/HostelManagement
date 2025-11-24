@@ -25,8 +25,9 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release HostelManagement.sln
 
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
+        # REMOVE TESTS
+      - name: Skip Tests (no test project)
+        run: echo "Skipping tests as no tests exist"
 
       - name: Set image tag
         id: set-tag
