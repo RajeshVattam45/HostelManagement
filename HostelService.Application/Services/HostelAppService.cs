@@ -20,6 +20,7 @@ namespace HostelService.Application.Services
             _repo = repo;
         }
 
+
         public async Task<HostelDto?> GetByIdAsync ( int id )
         {
             var entity = await _repo.GetByIdAsync ( id );
