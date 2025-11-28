@@ -1,4 +1,4 @@
-services:
+﻿services:
   hostel-api:
     image: vattamrajesh/hostelmanagement:latest
     ports:
@@ -18,8 +18,13 @@ services:
       ACCEPT_EULA: "Y"
     ports:
       - "1433:1433"
+    volumes:
+      - hostel_db_data:/var/opt/mssql           # <─ Persist database !!!
     networks:
       - hostel-network
 
 networks:
   hostel-network:
+
+volumes:
+  hostel_db_data:
