@@ -37,8 +37,8 @@ jobs:
         run: |
           docker build \
             -t ${{ secrets.DOCKER_USERNAME }}/hostelmanagement:${{ steps.set-tag.outputs.image_tag }} \
-            -f src/HostelManagement/HostelService.API/Dockerfile \
-            src/HostelManagement
+            -f HostelService.API/Dockerfile \
+            .
 
 
       - name: Login to DockerHub
