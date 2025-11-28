@@ -64,6 +64,7 @@ jobs:
           dir /s
   
       - name: Deploy using local runner
+        shell: cmd
         run: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/hostelmanagement:${{ needs.build_test_and_push.outputs.image_tag }}
           docker compose -f docker-compose.yml down
