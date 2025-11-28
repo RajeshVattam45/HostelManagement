@@ -56,13 +56,12 @@ jobs:
         uses: actions/checkout@v4
   
       - name: Debug paths
-        shell: powershell
+        shell: cmd
         run: |
-            Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-            Write-Host "Current directory:"
-            Get-Location
-            Write-Host "List files:"
-            Get-ChildItem -Recurse
+          echo Current directory:
+          cd
+          echo List files:
+          dir /s
   
       - name: Deploy using local runner
         run: |
