@@ -64,7 +64,6 @@ namespace HostelService.API.Controllers
             }
         }
 
-
         // DELETE: api/hostels/{id}
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Delete(int id)
