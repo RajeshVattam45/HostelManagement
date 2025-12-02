@@ -7,24 +7,24 @@
       ASPNETCORE_ENVIRONMENT: "Development"
       ConnectionStrings__DefaultConnection: ${DB_CONNECTION}
     depends_on:
-      - hostel-db
+      - hostel-db-main
     networks:
-      - hostel-network
+      - hostel-main-network
 
-  hostel-db:
+  hostel-db-main:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
       SA_PASSWORD: ${DB_PASSWORD}
       ACCEPT_EULA: "Y"
     ports:
-      - "1433:1433"
+      - "1450:1433"
     volumes:
-      - hostel_db_data:/var/opt/mssql           # <─ Persist database !!!
+      - hostel_main_db_data:/var/opt/mssql
     networks:
-      - hostel-network
+      - hostel-main-network
 
 networks:
-  hostel-network:
+  hostel-main-network:
 
 volumes:
-  hostel_db_data:
+  hostel_main_db_data:
