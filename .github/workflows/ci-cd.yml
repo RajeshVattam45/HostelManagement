@@ -1,38 +1,54 @@
+# Name of the GitHub Actions workflow (shown in GitHub UI)
 name: CI/CD for HostelService
 
+# This workflow runs automatically when code is pushed to the master branch
 on:
   push:
     branches: [ "master" ]
 
 jobs:
+  # ----------------------------------------
+  # JOB 1: Build the project and push Docker image
+  # ----------------------------------------
   build_test_and_push:
+    # This job runs on a GitHub-hosted Ubuntu virtual machine
     runs-on: ubuntu-latest
+
+    # Expose the Docker image tag so the next job can use it
     outputs:
       image_tag: ${{ steps.set-tag.outputs.image_tag }}
 
     steps:
+      # Step 1: Download the source code from the GitHub repository
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Step 2: Install .NET 8 SDK on the runner machine
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
 
+      # Step 3: Restore all NuGet packages used by the solution
       - name: Restore
         run: dotnet restore HostelManagement.sln
 
+      # Step 4: Build the solution in Release mode
       - name: Build
         run: dotnet build --configuration Release HostelManagement.sln
 
-        # REMOVE TESTS
+      # Step 5: Skip tests (placeholder since no test project exists)
       - name: Skip Tests (no test project)
         run: echo "Skipping tests as no tests exist"
 
+      # Step 6: Set Docker image tag using the Git commit SHA
+      # This makes each image uniquely identifiable
       - name: Set image tag
         id: set-tag
         run: echo "image_tag=${{ github.sha }}" >> $GITHUB_OUTPUT
 
+      # Step 7: Build the Docker image using the Dockerfile
+      # The image is tagged with DockerHub username and commit SHA
       - name: Build Docker image
         run: |
           docker build \
@@ -40,21 +56,31 @@ jobs:
             -f HostelService.API/Dockerfile \
             .
 
-
+      # Step 8: Login to DockerHub using credentials stored in GitHub Secrets
       - name: Login to DockerHub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
+      # Step 9: Push the Docker image to DockerHub
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/hostelmanagement:${{ steps.set-tag.outputs.image_tag }}
 
+  # ----------------------------------------
+  # JOB 2: Deploy the Docker image on local (self-hosted) runner
+  # ----------------------------------------
   deploy_to_local_runner:
+    # This job runs only after the build_test_and_push job succeeds
     needs: build_test_and_push
+
+    # Run this job on a self-hosted runner (your local/server machine)
     runs-on: [self-hosted]
   
     steps:
+      # Step 1: Checkout the repository again (needed for docker-compose.yml)
       - name: Checkout repository
         uses: actions/checkout@v4
   
+      # Step 2: Debug step to print current directory and list all files
+      # Helps identify path or file issues during deployment
       - name: Debug paths
         shell: cmd
         run: |
@@ -63,11 +89,13 @@ jobs:
           echo List files:
           dir /s
   
+      # Step 3: Deploy the application using Docker Compose
+      # - Pull latest image from DockerHub
+      # - Stop existing containers
+      # - Start containers in detached mode
       - name: Deploy using local runner
         shell: cmd
         run: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/hostelmanagement:${{ needs.build_test_and_push.outputs.image_tag }}
           docker compose -f docker-compose.yml down
           docker compose -f docker-compose.yml up -d
-
-
